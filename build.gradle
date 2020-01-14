@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    // https://mvnrepository.com/artifact/org.openjfx/javafx
+//    compile group: 'org.openjfx', name: 'javafx', version: '13', ext: 'pom'
+}
+
+javafx {
+    version = "13"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
