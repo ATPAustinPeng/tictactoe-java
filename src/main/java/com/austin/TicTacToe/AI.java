@@ -40,11 +40,9 @@ public class AI {
         char winner = board.checkWinner();
         if (winner == getKey()) {
             return 1;
-        }
-        else if (winner == 'O') {
+        } else if (winner == 'O') {
             return -1;
-        }
-        else if (winner == 'T'){
+        } else if (winner == 'T') {
             return 0;
         }
 
