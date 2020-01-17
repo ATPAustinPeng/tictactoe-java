@@ -1,19 +1,33 @@
 package com.austin.TicTacToe;
 
 
-// Assuming AI goes first...
+// NOTE: definitely not an AI... this is just an algorithm...
 public class AI {
 
+    /**
+     * The char that the 'AI' uses to play its moves on the board.
+     */
     private char key;
 
-    public AI(char key) {
-        this.key = key;
+    /**
+     * Constructs a AI object with a default key 'X'.
+     */
+    public AI() {
+        this.key = 'X';
     }
 
+    /**
+     * Gets the key used by the AI
+     * @return the key used by the AI
+     */
     public char getKey() {
         return key;
     }
 
+    /**
+     * AI finds its next move (using the minimax algorithm).
+     * @param board the current board state
+     */
     public void move(Board board) {
         int bestScore = Integer.MIN_VALUE;
         int[] bestMove = null;
@@ -35,7 +49,15 @@ public class AI {
         board.getBoard()[bestMove[0]][bestMove[1]] = getKey();
     }
 
-    // if moving first, set isMaximizing for the first call as TRUE
+    /**
+     * A helper method to aid the AI in finding the best possible move through using the minimax algorithm.
+     * AI is trying to maximize its score in order to find its best move to help it win.
+     * AI also calculates the best move for the player (minimizing) in order to maximize its further/next moves.
+     * @param board the current board state
+     * @param depth the depth of the recursive call (mainly for debugging purposes)
+     * @param isMaximizing whether or not the AI or player is moving (if AI is moving, it is trying to maximize; if player is moving, it is trying to minimize)
+     * @return the best score; 1 if AI wins, 0 if tie, -1 if player wins
+     */
     public int minimax(Board board, int depth, boolean isMaximizing) {
         char winner = board.checkWinner();
         if (winner == getKey()) {

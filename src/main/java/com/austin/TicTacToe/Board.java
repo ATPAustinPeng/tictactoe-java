@@ -2,8 +2,14 @@ package com.austin.TicTacToe;
 
 public class Board {
 
+    /**
+     * A character array storing the values of the board ('X', 'O', or ' ')
+     */
     private char[][] board;
 
+    /**
+     * Default constructor: creates a Board object with a 3 by 3 size.
+     */
     public Board() {
         this.board = new char[3][3];
         for (int i = 0; i < board.length; i++) {
@@ -13,15 +19,32 @@ public class Board {
         }
     }
 
+    /**
+     * Creates and x (row) by y (column) size board.
+     * @param x the number of rows
+     * @param y the number of columns
+     */
+    public Board(int x, int y) {
+        this.board = new char[x][y];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][j] = ' ';
+            }
+        }
+    }
+
+    /**
+     * Gets the board.
+     * @return the board (a 2D char array)
+     */
     public char[][] getBoard() {
         return board;
     }
 
     /**
-     * Returns the winner. (X, O, ' ')
-     * @return the winner (X, O); returns a space (' ') if there is no winner
+     * Gets the board state, converts it to a string. Can be printed with System.out.println()
+     * @return a String with the current representation of the board
      */
-
     public String printBoard() {
         String temp = "";
         for (int i = 0; i < board.length; i++) {
@@ -52,10 +75,14 @@ public class Board {
         return false;
     }
 
+    /**
+     * Gets the number of empty spots left in the board.
+     * @return the number of empty spots in the board
+     */
     public int numEmptySpots() {
         int counter = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == ' ') {
                     counter++;
                 }
@@ -64,8 +91,10 @@ public class Board {
         return counter;
     }
 
+    // TODO: change this method to be able to check winner for any size board, don't hard code it
     /**
-     * Finds the winner and sets the winner.
+     * Finds the winner, if there is a winner.
+     * @return the key of the winner (a char) if there is a winner, 'T' if there is a tie, ' ' if there is no winner
      */
     public char checkWinner() {
         char winner = ' ';
