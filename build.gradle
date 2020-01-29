@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
 //    // https://mvnrepository.com/artifact/org.openjfx/javafx
-//    compile group: 'org.openjfx', name: 'javafx', version: '13', ext: 'pom'
+    compile group: 'org.openjfx', name: 'javafx', version: '13', ext: 'pom'
 }
 
 javafx {
